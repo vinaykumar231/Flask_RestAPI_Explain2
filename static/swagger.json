@@ -1,0 +1,115 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Flask Property API",
+      "description": "API for managing properties.",
+      "version": "1.0.0"
+    },
+    "host": "127.0.0.1:8003",
+    "basePath": "/api",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/properties": {
+        "post": {
+          "summary": "Add a new property",
+          "operationId": "addProperty",
+          "parameters": [
+            {
+              "name": "property",
+              "in": "body",
+              "description": "Property object to be added",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Property"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Property added successfully",
+              "schema": {
+                "$ref": "#/definitions/Property"
+              }
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Property": {
+        "type": "object",
+        "properties": {
+          "property_code": {
+            "type": "string",
+            "example": "P001"
+          },
+          "building": {
+            "type": "string",
+            "example": "Building A"
+          },
+          "address2": {
+            "type": "string",
+            "example": "1234 Address St"
+          },
+          "city": {
+            "type": "string",
+            "example": "Sample City"
+          },
+          "area": {
+            "type": "string",
+            "example": "Downtown"
+          },
+          "pin": {
+            "type": "string",
+            "example": "123456"
+          },
+          "des_code": {
+            "type": "string",
+            "example": "DES001"
+          },
+          "lease_code": {
+            "type": "string",
+            "example": "LEASE123"
+          },
+          "status_code": {
+            "type": "string",
+            "example": "ACTIVE"
+          },
+          "usp": {
+            "type": "string",
+            "example": "USP Detail"
+          },
+          "company": {
+            "type": "string",
+            "example": "Company XYZ"
+          },
+          "contact_person1": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "contact_person2": {
+            "type": "string",
+            "example": "Jane Smith"
+          },
+          "contact_person3": {
+            "type": "string",
+            "example": "Alice Johnson"
+          },
+          "c_status": {
+            "type": "string",
+            "example": "New"
+          },
+          "property_type": {
+            "type": "string",
+            "example": "Commercial"
+          }
+        }
+      }
+    }
+  }
+  
