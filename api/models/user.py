@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 class User(db.Model):
     __tablename__ = 'users'
 
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, primary_key=True) ###user
     user_name = Column(String(80), unique=True, nullable=False)
     password = Column(String(128), nullable=False)
     email = Column(String(120), unique=True, nullable=False)
