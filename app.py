@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_swagger_ui import get_swaggerui_blueprint
@@ -11,22 +11,21 @@ from api.models.propertyDetails import Property_Detils
 
 
 
-# Initialize Flask app
 app = Flask(__name__)
+
 migrate = Migrate(app, db)
 
-# Initialize database
 init_db(app)
 
-# Swagger UI configuration
-SWAGGER_URL = '/swagger'  # URL for Swagger UI
-API_URL = '/static/swagger.json'  # Location of Swagger JSON file
 
-# Create Swagger UI blueprint
+SWAGGER_URL = '/swagger'  
+API_URL = '/static/swagger.json' 
+
+
 swagger_ui_blueprint = get_swaggerui_blueprint(
-    SWAGGER_URL,  # Swagger UI route
-    API_URL,  # API documentation URL
-    config={  # Swagger UI configuration
+    SWAGGER_URL,  
+    API_URL,  
+    config={  
         'app_name': "Flask Property API"
     }
 )
@@ -38,6 +37,7 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 app.register_blueprint(property_blueprint, url_prefix="/api")
 app.register_blueprint(property_details_bp, url_prefix="/api")
 app.register_blueprint(auth_bp, url_prefix="/api")
+
 
 # Run the app
 if __name__ == "__main__":

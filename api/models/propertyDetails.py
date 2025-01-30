@@ -11,6 +11,7 @@ class Property_Detils(db.Model):
     __tablename__ = "property_details"
     id = Column(Integer, primary_key=True, index=True)
     property_code = Column(Integer, ForeignKey("property.property_code"))
+    property_image_Path = Column(String(250))
     rate_buy = Column(Float)
     rate_lease = Column(Float)
     floor = Column(Integer)
